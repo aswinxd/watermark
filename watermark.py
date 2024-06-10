@@ -32,7 +32,7 @@ async def connect_channel(client, message: Message):
     )
     await message.reply_text(f"Connected to channel {channel_id}. Please send the watermark text or image.")
 
-@app.on_message(filters.text & ~filters.command)
+@app.on_message(filters.text & filters.command)
 async def set_watermark_text(client, message: Message):
     chat_id = str(message.chat.id)
     channel_collection.update_one(
